@@ -1,0 +1,66 @@
+package com.trifonov.packship.di.module
+
+import com.fasterxml.jackson.databind.DeserializationFeature
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.moczul.ok2curl.CurlInterceptor
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.jackson.JacksonConverterFactory
+import timber.log.Timber
+import javax.inject.Singleton
+
+@InstallIn(ApplicationComponent::class)
+@Module
+class NetworkModule {
+    @Provides
+    @Singleton
+    fun providesObjectMapper(): ObjectMapper {
+        val objectMapper = jacksonObjectMapper()
+
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+        objectMapper.configure(
+            DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE,
+            true
+        )
+
+        return objectMapper
+    }
+
+    @Provides
+    @Singleton
+    fun providesJacksonConverterFactory(objectMapper: ObjectMapper): JacksonConverterFactory {
+        return JacksonConverterFactory.create(objectMapper)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRetrofitClient(
+        converterFactory: JacksonConverterFactory,
+        okHttpClient: OkHttpClient,
+    ): Retrofit {
+        return Retrofit.Builder()
+            .client(okHttpClient)
+            .baseUrl("https://localhost:8080/")
+            .addConverterFactory(converterFactory)
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(CurlInterceptor { message -> Timber.d(message) })
+            .build()
+    }
+
+//    @Provides
+//    @Singleton
+//    fun providePhoneEndpoint(retrofit: Retrofit): PhoneEndpoint {
+//        return retrofit.create(PhoneEndpoint::class.java)
+//    }
+}
