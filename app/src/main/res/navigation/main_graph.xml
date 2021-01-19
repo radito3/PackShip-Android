@@ -5,6 +5,20 @@
 
     <fragment
         android:id="@+id/inventoriesFragment"
-        android:name="com.trifonov.packship.ui.fragment.InventoriesFragment"
-        android:label="InventoriesFragment" />
+        android:name="com.trifonov.packship.ui.fragment.inventory.InventoriesFragment"
+        android:label="Inventories" >
+        <action
+            android:id="@+id/action_inventoriesFragment_to_addInventoryFragment"
+            app:destination="@id/addInventoryFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addInventoryFragment"
+        android:name="com.trifonov.packship.ui.fragment.FourthFragment"
+        android:label="Add Inventory">
+    </fragment>
+
+    <include app:graph="@navigation/shipments_graph" />
+    <include app:graph="@navigation/third_graph" />
+    <include app:graph="@navigation/fourth_graph" />
 </navigation>

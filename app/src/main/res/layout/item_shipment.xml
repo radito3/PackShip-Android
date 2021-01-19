@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.trifonov.packship.viewmodel.shipment.ShipmentItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_inventory_item">
+
+        <ImageView
+            android:id="@+id/img_status"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="16dp"
+            app:imageResource="@{viewModel.statusIcon}"
+            tools:src="@drawable/ic_distributed_shipment"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/txt_packed_containers_value"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_revenue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/revenue"
+            android:typeface="sans"
+            app:layout_constraintStart_toEndOf="@id/img_status"
+            app:layout_constraintTop_toTopOf="@id/img_status" />
+
+        <TextView
+            android:id="@+id/txt_revenue_value"
+            tools:text="400"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="@{viewModel.revenue}"
+            android:textStyle="bold"
+            android:typeface="sans"
+            app:layout_constraintStart_toEndOf="@id/txt_revenue"
+            app:layout_constraintTop_toTopOf="@id/txt_revenue" />
+
+        <TextView
+            android:id="@+id/txt_expenses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/expenses"
+            android:typeface="sans"
+            app:layout_constraintBottom_toBottomOf="@id/img_status"
+            app:layout_constraintStart_toStartOf="@id/txt_revenue" />
+
+        <TextView
+            android:id="@+id/txt_expenses_value"
+            tools:text="600"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="@{viewModel.transportationExpenses}"
+            android:textStyle="bold"
+            android:typeface="sans"
+            app:layout_constraintStart_toEndOf="@id/txt_expenses"
+            app:layout_constraintTop_toTopOf="@id/txt_expenses" />
+
+        <TextView
+            android:id="@+id/txt_packed_containers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:text="@string/packed_containers"
+            app:layout_constraintBottom_toBottomOf="@id/txt_packed_containers_value"
+            app:layout_constraintEnd_toStartOf="@id/txt_packed_containers_value"
+            app:layout_constraintTop_toTopOf="@id/txt_packed_containers_value" />
+
+        <TextView
+            android:id="@+id/txt_packed_containers_value"
+            tools:text="25"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@{viewModel.packedContainers}"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/txt_assignments_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_status"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_assignments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:text="@string/accepted_containers"
+            app:layout_constraintBottom_toBottomOf="@id/txt_assignments_value"
+            app:layout_constraintEnd_toStartOf="@id/txt_assignments_value"
+            app:layout_constraintTop_toTopOf="@id/txt_assignments_value" />
+
+        <TextView
+            android:id="@+id/txt_assignments_value"
+            tools:text="25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@{viewModel.assignments}"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="@id/txt_packed_containers_value"
+            app:layout_constraintTop_toBottomOf="@id/txt_packed_containers_value" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

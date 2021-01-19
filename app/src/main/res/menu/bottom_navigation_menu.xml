@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/main_graph"
+        android:icon="@drawable/ic_inventories"
+        tools:ignore="MenuTitle" />
+
+    <item
+        android:id="@+id/second_graph"
+        android:icon="@drawable/ic_clipboard"
+        tools:ignore="MenuTitle" />
+
+    <item
+        android:id="@+id/third_graph"
+        android:icon="@drawable/ic_maps_and_flags"
+        tools:ignore="MenuTitle" />
+
+    <item
+        android:id="@+id/fourth_graph"
+        android:icon="@drawable/ic_preference"
+        tools:ignore="MenuTitle" />
+
+</menu>

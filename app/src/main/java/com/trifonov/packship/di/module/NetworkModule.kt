@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.moczul.ok2curl.CurlInterceptor
+import com.trifonov.packship.network.endpoint.InventoryEndpoint
+import com.trifonov.packship.network.endpoint.ShipmentEndpoint
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,28 +41,34 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofitClient(
-        converterFactory: JacksonConverterFactory,
-        okHttpClient: OkHttpClient,
-    ): Retrofit {
-        return Retrofit.Builder()
-            .client(okHttpClient)
-            .baseUrl("https://localhost:8080/")
-            .addConverterFactory(converterFactory)
-            .build()
-    }
-
-    @Provides
-    @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(CurlInterceptor { message -> Timber.d(message) })
             .build()
     }
 
-//    @Provides
-//    @Singleton
-//    fun providePhoneEndpoint(retrofit: Retrofit): PhoneEndpoint {
-//        return retrofit.create(PhoneEndpoint::class.java)
-//    }
+    @Provides
+    @Singleton
+    fun provideRetrofitClient(
+        converterFactory: JacksonConverterFactory,
+        okHttpClient: OkHttpClient
+    ): Retrofit {
+        return Retrofit.Builder()
+            .client(okHttpClient)
+            .baseUrl("http://10.0.2.2:8080/")
+            .addConverterFactory(converterFactory)
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideInventoryEndpoint(retrofit: Retrofit): InventoryEndpoint {
+        return retrofit.create(InventoryEndpoint::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideShipmentEndpoint(retrofit: Retrofit): ShipmentEndpoint {
+        return retrofit.create(ShipmentEndpoint::class.java)
+    }
 }
