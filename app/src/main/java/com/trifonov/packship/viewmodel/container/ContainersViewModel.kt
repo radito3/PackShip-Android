@@ -1,28 +1,28 @@
-package com.trifonov.packship.viewmodel.shipment
+package com.trifonov.packship.viewmodel.container
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.trifonov.packship.network.PackShipResponse
-import com.trifonov.packship.network.model.shipment.Shipment
-import com.trifonov.packship.repository.ShipmentRepository
+import com.trifonov.packship.network.model.containers.Container
+import com.trifonov.packship.repository.ContainerRepository
 import com.trifonov.packship.util.DispatcherProvider
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class ShipmentsViewModel @ViewModelInject constructor(
-    private val shipmentRepository: ShipmentRepository,
+class ContainersViewModel @ViewModelInject constructor(
+    private val containerRepository: ContainerRepository,
     private val dispatcherProvider: DispatcherProvider
 ) : ViewModel(), LifecycleObserver {
 
-    val shipments = MutableLiveData<List<Shipment>>()
+    val containers = MutableLiveData<List<Container>>()
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    fun getShipments() {
+    fun getContainers() {
         viewModelScope.launch(dispatcherProvider.ui) {
-            when (val response = shipmentRepository.getShipments()) {
+            when (val response = containerRepository.getContainers()) {
                 is PackShipResponse.Success -> {
                     Timber.e(response.data.toString())
-                    shipments.value = response.data
+                    containers.value = response.data
                 }
                 is PackShipResponse.Error -> {
                     Timber.d(response.message)

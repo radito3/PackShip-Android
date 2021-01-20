@@ -1,15 +1,17 @@
-package com.trifonov.packship.ui.fragment.inventory
+package com.trifonov.packship.view.fragment.inventory
 
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.trifonov.packship.R
 import com.trifonov.packship.adapter.inventory.InventoriesAdapter
 import com.trifonov.packship.databinding.FragmentInventoriesBinding
+import com.trifonov.packship.util.getNavigationResultLiveData
 import com.trifonov.packship.viewmodel.inventory.InventoriesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -61,6 +63,10 @@ class InventoriesFragment : Fragment() {
         viewModel.addInventory.observe(viewLifecycleOwner) {
             findNavController().navigate(R.id.addInventoryFragment)
         }
+
+        getNavigationResultLiveData<Unit>("NEW_INVENTORY")?.observe(viewLifecycleOwner, {
+            viewModel.getInventories()
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -1,4 +1,4 @@
-package com.trifonov.packship.ui.fragment
+package com.trifonov.packship.view.fragment
 
 
 import android.os.Bundle

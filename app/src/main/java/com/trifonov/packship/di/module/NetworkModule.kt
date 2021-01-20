@@ -4,8 +4,10 @@ import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.moczul.ok2curl.CurlInterceptor
+import com.trifonov.packship.network.endpoint.ContainerEndpoint
 import com.trifonov.packship.network.endpoint.InventoryEndpoint
 import com.trifonov.packship.network.endpoint.ShipmentEndpoint
+import com.trifonov.packship.network.endpoint.SupplierEndpoint
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -70,5 +72,17 @@ class NetworkModule {
     @Singleton
     fun provideShipmentEndpoint(retrofit: Retrofit): ShipmentEndpoint {
         return retrofit.create(ShipmentEndpoint::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSupplierEndpoint(retrofit: Retrofit): SupplierEndpoint {
+        return retrofit.create(SupplierEndpoint::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideContainerEndpoint(retrofit: Retrofit): ContainerEndpoint {
+        return retrofit.create(ContainerEndpoint::class.java)
     }
 }

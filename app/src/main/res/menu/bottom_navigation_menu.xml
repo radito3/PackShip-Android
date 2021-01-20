@@ -4,22 +4,22 @@
 
     <item
         android:id="@+id/main_graph"
-        android:icon="@drawable/ic_inventories"
+        android:icon="@drawable/ic_warehouse"
         tools:ignore="MenuTitle" />
 
     <item
         android:id="@+id/second_graph"
-        android:icon="@drawable/ic_clipboard"
+        android:icon="@drawable/ic_this_side_up"
         tools:ignore="MenuTitle" />
 
     <item
         android:id="@+id/third_graph"
-        android:icon="@drawable/ic_maps_and_flags"
+        android:icon="@drawable/ic_delivery_truck_24_hours"
         tools:ignore="MenuTitle" />
 
     <item
         android:id="@+id/fourth_graph"
-        android:icon="@drawable/ic_preference"
+        android:icon="@drawable/ic_container"
         tools:ignore="MenuTitle" />
 
 </menu>

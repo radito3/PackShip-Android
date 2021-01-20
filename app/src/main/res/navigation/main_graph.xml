@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
     app:startDestination="@id/inventoriesFragment">
 
     <fragment
+        tools:layout="@layout/fragment_inventories"
         android:id="@+id/inventoriesFragment"
-        android:name="com.trifonov.packship.ui.fragment.inventory.InventoriesFragment"
+        android:name="com.trifonov.packship.view.fragment.inventory.InventoriesFragment"
         android:label="Inventories" >
-        <action
-            android:id="@+id/action_inventoriesFragment_to_addInventoryFragment"
-            app:destination="@id/addInventoryFragment" />
     </fragment>
 
-    <fragment
+    <dialog
+        tools:layout="@layout/fragment_add_inventory"
         android:id="@+id/addInventoryFragment"
-        android:name="com.trifonov.packship.ui.fragment.FourthFragment"
+        android:name="com.trifonov.packship.view.fragment.inventory.AddInventoryBottomSheetDialogFragment"
         android:label="Add Inventory">
-    </fragment>
+    </dialog>
 
     <include app:graph="@navigation/shipments_graph" />
-    <include app:graph="@navigation/third_graph" />
-    <include app:graph="@navigation/fourth_graph" />
+    <include app:graph="@navigation/suppliers_graph" />
+    <include app:graph="@navigation/containers_graph" />
 </navigation>

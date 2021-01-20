@@ -1,4 +1,7 @@
-package com.trifonov.packship.network.model
+package com.trifonov.packship.network.model.supplier
+
+class Responses {
+}
 
 data class Supplier(
     val identity: String,
@@ -7,4 +10,3 @@ data class Supplier(
     val state: String,
     val loadedContainers: Int
 )
-

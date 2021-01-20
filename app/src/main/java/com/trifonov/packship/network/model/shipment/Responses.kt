@@ -8,13 +8,3 @@ data class Shipment(
     val packedContainers: Int,
     val assignments: Int
 )
-
-//[Shipment{Jump to definition
-//    identity	string
-//            revenue	number
-//            transportationExpenses	number
-//            status	string
-//            packedContainers	number
-//            assignments	number
-//
-//}]

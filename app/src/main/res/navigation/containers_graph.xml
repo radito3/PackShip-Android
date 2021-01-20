@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fourth_graph"
+    app:startDestination="@id/containersFragment">
+
+    <fragment
+        tools:layout="@layout/fragment_containers"
+        android:id="@+id/containersFragment"
+        android:name="com.trifonov.packship.view.fragment.container.ContainersFragment"
+        android:label="Containers" />
+</navigation>

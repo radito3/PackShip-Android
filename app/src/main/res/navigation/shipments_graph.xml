@@ -8,6 +8,6 @@
     <fragment
         tools:layout= "@layout/fragment_shipments"
         android:id="@+id/shipmentFragment"
-        android:name="com.trifonov.packship.ui.fragment.shipment.ShipmentFragment"
+        android:name="com.trifonov.packship.view.fragment.shipment.ShipmentFragment"
         android:label="Shipments" />
 </navigation>

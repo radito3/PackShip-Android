@@ -1,23 +1,27 @@
 <resources>
     <string name="app_name">PackShip</string>
 
-    <!--  Inventories  -->
+    <string name="save">Save</string>
+
+    <!-- Inventories -->
     <string name="width">Width</string>
     <string name="height">Height</string>
     <string name="accepted_containers">Accepted Containers</string>
+    <string name="add_inventory">Add Inventory</string>
 
-    <!--    Shipments-->
+    <!-- Shipments -->
     <string name="revenue"> Revenue</string>
     <string name="expenses">Expenses</string>
     <string name="packed_containers">Packed Containers</string>
     <string name="assignments">Assignments</string>
 
-    <!--    data class Shipment(-->
-    <!--    val identity: String,-->
-    <!--    val revenue: Double,-->
-    <!--    val transportationExpenses: Double,-->
-    <!--    val status: String,-->
-    <!--    val packedContainers: Int,-->
-    <!--    val assignments: Int-->
-    <!--    )-->
+    <!--Supplier -->
+    <string name="maximum_weight">Max Weight</string>
+    <string name="loadedWeight">Loaded Weight</string>
+    <string name="loadedContainers">Containers</string>
+
+    <!-- Container -->
+    <string name="container_maximum_weight">Max Weight</string>
+    <string name="cargoes">Cargoes</string>
+
 </resources>

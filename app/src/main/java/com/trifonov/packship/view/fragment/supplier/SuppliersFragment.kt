@@ -1,4 +1,4 @@
-package com.trifonov.packship.ui.fragment.shipment
+package com.trifonov.packship.view.fragment.supplier
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,19 +9,19 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.trifonov.packship.R
-import com.trifonov.packship.adapter.shipment.ShipmentsAdapter
-import com.trifonov.packship.databinding.FragmentShipmentsBinding
-import com.trifonov.packship.viewmodel.shipment.ShipmentsViewModel
+import com.trifonov.packship.adapter.supplier.SuppliersAdapter
+import com.trifonov.packship.databinding.FragmentSuppliersBinding
+import com.trifonov.packship.viewmodel.supplier.SuppliersViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ShipmentFragment : Fragment() {
+class SuppliersFragment : Fragment() {
 
-    private val viewModel: ShipmentsViewModel by viewModels()
+    private val viewModel: SuppliersViewModel by viewModels()
 
-    private lateinit var binding: FragmentShipmentsBinding
+    private lateinit var binding: FragmentSuppliersBinding
 
-    private lateinit var shipmentsAdapter: ShipmentsAdapter
+    private lateinit var supplierAdapter: SuppliersAdapter
 
 
     override fun onCreateView(
@@ -29,7 +29,7 @@ class ShipmentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_shipments, container, false
+            inflater, R.layout.fragment_suppliers, container, false
         )
 
         lifecycle.addObserver(viewModel)
@@ -44,16 +44,17 @@ class ShipmentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        shipmentsAdapter = ShipmentsAdapter(viewLifecycleOwner)
+        supplierAdapter = SuppliersAdapter(viewLifecycleOwner)
 
-        binding.rcvShipments.apply {
+        binding.rcvSuppliers.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = shipmentsAdapter
+            adapter = supplierAdapter
         }
 
-        viewModel.shipments.observe(viewLifecycleOwner) { shipments ->
+        viewModel.suppliers.observe(viewLifecycleOwner) { suppliers ->
 
-            shipmentsAdapter.setShipments(shipments)
+            supplierAdapter.setSuppliers(suppliers)
         }
+
     }
 }

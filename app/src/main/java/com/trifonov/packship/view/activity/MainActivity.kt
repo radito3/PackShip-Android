@@ -1,4 +1,4 @@
-package com.trifonov.packship.ui.activity
+package com.trifonov.packship.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -32,7 +32,14 @@ class MainActivity : AppCompatActivity() {
         navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.inventoriesFragment, R.id.shipmentFragment))
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.inventoriesFragment,
+                R.id.shipmentFragment,
+                R.id.suppliersFragment,
+                R.id.containersFragment
+            )
+        )
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         toolbar = findViewById(R.id.toolbar)
 
