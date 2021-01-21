@@ -42,22 +42,6 @@ class AddInventoryBottomSheetDialogFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolbar.setTitle(R.string.add_inventory)
-        binding.toolbar.inflateMenu(R.menu.menu_bottom_sheet_dialog_fragment)
-
-        binding.toolbar.setOnMenuItemClickListener(object : Toolbar.OnMenuItemClickListener,
-            androidx.appcompat.widget.Toolbar.OnMenuItemClickListener {
-            override fun onMenuItemClick(item: MenuItem?): Boolean {
-                return when (item?.itemId) {
-                    R.id.menu_save -> {
-                        viewModel.onSaveButtonClicked()
-                        true
-                    }
-                    else -> false
-                }
-            }
-        })
-
         viewModel.back.observe(viewLifecycleOwner) {
             setNavigationResult("NEW_INVENTORY", null)
             findNavController().popBackStack()
