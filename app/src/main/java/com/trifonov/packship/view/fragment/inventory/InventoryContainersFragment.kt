@@ -1,4 +1,4 @@
-package com.trifonov.packship.view.fragment.container
+package com.trifonov.packship.view.fragment.inventory
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,26 +9,26 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.trifonov.packship.R
-import com.trifonov.packship.adapter.container.ContainersAdapter
-import com.trifonov.packship.databinding.FragmentContainersBinding
-import com.trifonov.packship.viewmodel.container.ContainersViewModel
+import com.trifonov.packship.adapter.container.InventoryContainersAdapter
+import com.trifonov.packship.databinding.FragmentInventoryContainersBinding
+import com.trifonov.packship.viewmodel.inventory.InventoryContainersViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ContainersFragment : Fragment() {
+class InventoryContainersFragment : Fragment() {
 
-    private val viewModel: ContainersViewModel by viewModels()
+    private val viewModel: InventoryContainersViewModel by viewModels()
 
-    private lateinit var binding: FragmentContainersBinding
+    private lateinit var binding: FragmentInventoryContainersBinding
 
-    private lateinit var containersAdapter: ContainersAdapter
+    private lateinit var containersAdapter: InventoryContainersAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_containers, container, false
+            inflater, R.layout.fragment_inventory_containers, container, false
         )
 
         lifecycle.addObserver(viewModel)
@@ -43,7 +43,7 @@ class ContainersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        containersAdapter = ContainersAdapter(viewLifecycleOwner, viewModel.onContainerClicked)
+        containersAdapter = InventoryContainersAdapter(viewLifecycleOwner, viewModel.containerDetails)
 
         binding.rcvContainers.apply {
             layoutManager = LinearLayoutManager(context)

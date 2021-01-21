@@ -1,5 +1,6 @@
 package com.trifonov.packship.network.endpoint
 
+import com.trifonov.packship.network.model.containers.Container
 import com.trifonov.packship.network.model.inventory.Inventory
 import com.trifonov.packship.network.model.inventory.InventoryBody
 import retrofit2.http.Body
@@ -17,5 +18,8 @@ interface InventoryEndpoint {
 
     @POST("inventories")
     suspend fun addInventory(@Body inventory: InventoryBody)
+
+    @GET("inventories/{inventoryId}/containers")
+    suspend fun getInventoryContainers(@Path("inventoryId") id : String) : List<Container>
 }
 

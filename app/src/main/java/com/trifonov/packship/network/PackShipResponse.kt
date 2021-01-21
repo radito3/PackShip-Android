@@ -8,8 +8,8 @@ sealed class PackShipResponse<out R> {
     data class Error(val exception: Exception, val message: String? = null) : PackShipResponse<Nothing>()
 }
 
-suspend fun <T> safeApiCall(
-    apiCall: suspend () -> T
+suspend inline fun <T> safeApiCall(
+    crossinline  apiCall: suspend () -> T
 ): PackShipResponse<T> = withContext(Dispatchers.IO) {
     try {
         PackShipResponse.Success(apiCall.invoke())

@@ -61,7 +61,21 @@ class InventoriesFragment : Fragment() {
         }
 
         viewModel.addInventory.observe(viewLifecycleOwner) {
-            findNavController().navigate(R.id.addInventoryFragment)
+
+            findNavController()
+                .navigate(
+                    InventoriesFragmentDirections
+                        .actionInventoriesFragmentToAddInventoryFragment()
+                )
+        }
+
+        viewModel.onInventoryClicked.observe(viewLifecycleOwner) { id ->
+
+            findNavController()
+                .navigate(
+                    InventoriesFragmentDirections
+                        .actionInventoriesFragmentToInventoryContainersFragment(id)
+                )
         }
 
         getNavigationResultLiveData<Unit>("NEW_INVENTORY")?.observe(viewLifecycleOwner, {
@@ -77,7 +91,6 @@ class InventoriesFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_preferences -> {
-                findNavController().navigate(R.id.addInventoryFragment)
                 true
             }
             else -> super.onOptionsItemSelected(item)

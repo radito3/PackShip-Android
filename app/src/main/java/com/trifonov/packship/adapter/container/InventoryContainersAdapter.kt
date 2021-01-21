@@ -4,16 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
-import com.trifonov.packship.databinding.ItemContainerBinding
+import com.trifonov.packship.databinding.ItemInventoryContainerBinding
 import com.trifonov.packship.network.model.containers.Container
 import com.trifonov.packship.util.SingleLiveEvent
-import com.trifonov.packship.viewmodel.container.ContainerItemViewModel
+import com.trifonov.packship.viewmodel.inventory.InventoryContainerItemViewModel
 
-class ContainersAdapter(
+class InventoryContainersAdapter(
     private val lifecycleOwner: LifecycleOwner,
     private val onContainerClicked: SingleLiveEvent<String>
 ) :
-    RecyclerView.Adapter<ContainersAdapter.ContainerItemViewHolder>() {
+    RecyclerView.Adapter<InventoryContainersAdapter.InventoryContainerItemViewHolder>() {
 
     private var containers: List<Container> = listOf()
 
@@ -22,28 +22,31 @@ class ContainersAdapter(
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContainerItemViewHolder {
-        val viewModel = ContainerItemViewModel(onContainerClicked)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): InventoryContainerItemViewHolder {
+        val viewModel = InventoryContainerItemViewModel(onContainerClicked)
 
-        val binding = ItemContainerBinding
+        val binding = ItemInventoryContainerBinding
             .inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
 
-        return ContainerItemViewHolder(binding, viewModel)
+        return InventoryContainerItemViewHolder(binding, viewModel)
     }
 
-    override fun onBindViewHolder(holder: ContainerItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: InventoryContainerItemViewHolder, position: Int) {
         holder.onBind(containers[position])
     }
 
     override fun getItemCount(): Int = containers.size
 
-    inner class ContainerItemViewHolder(
-        private val binding: ItemContainerBinding,
-        private val viewModel: ContainerItemViewModel
+    inner class InventoryContainerItemViewHolder(
+        private val binding: ItemInventoryContainerBinding,
+        private val viewModel: InventoryContainerItemViewModel
     ) : RecyclerView.ViewHolder(binding.root) {
 
         init {

@@ -5,21 +5,37 @@
     android:id="@+id/main_graph"
     app:startDestination="@id/inventoriesFragment">
 
-    <fragment
-        tools:layout="@layout/fragment_inventories"
-        android:id="@+id/inventoriesFragment"
-        android:name="com.trifonov.packship.view.fragment.inventory.InventoriesFragment"
-        android:label="Inventories" >
-    </fragment>
-
-    <dialog
-        tools:layout="@layout/fragment_add_inventory"
-        android:id="@+id/addInventoryFragment"
-        android:name="com.trifonov.packship.view.fragment.inventory.AddInventoryBottomSheetDialogFragment"
-        android:label="Add Inventory">
-    </dialog>
-
     <include app:graph="@navigation/shipments_graph" />
     <include app:graph="@navigation/suppliers_graph" />
     <include app:graph="@navigation/containers_graph" />
+
+    <fragment
+        android:id="@+id/inventoriesFragment"
+        android:name="com.trifonov.packship.view.fragment.inventory.InventoriesFragment"
+        android:label="Inventories"
+        tools:layout="@layout/fragment_inventories">
+        <action
+            android:id="@+id/action_inventoriesFragment_to_addInventoryFragment"
+            app:destination="@id/addInventoryFragment" />
+        <action
+            android:id="@+id/action_inventoriesFragment_to_inventoryContainersFragment"
+            app:destination="@id/inventoryContainersFragment" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/addInventoryFragment"
+        android:name="com.trifonov.packship.view.fragment.inventory.AddInventoryBottomSheetDialogFragment"
+        android:label="Add Inventory"
+        tools:layout="@layout/fragment_add_inventory" />
+
+    <fragment
+        android:id="@+id/inventoryContainersFragment"
+        android:name="com.trifonov.packship.view.fragment.inventory.InventoryContainersFragment"
+        android:label="Inventory Containers"
+        tools:layout="@layout/fragment_inventory_containers">
+
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
 </navigation>
