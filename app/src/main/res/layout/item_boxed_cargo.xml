@@ -7,71 +7,70 @@
 
         <variable
             name="viewModel"
-            type="com.trifonov.packship.viewmodel.inventory.InventoryContainerItemViewModel" />
+            type="com.trifonov.packship.viewmodel.inventory.InventoryContainerCargoItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="108dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/bg_inventory_item"
-        android:onClick="@{() -> viewModel.onItemClicked()}">
+        android:background="@drawable/bg_inventory_item">
 
         <ImageView
-            android:id="@+id/img_container"
+            android:id="@+id/img_cargo"
             android:layout_width="44dp"
             android:layout_height="44dp"
             android:layout_marginStart="16dp"
-            android:src="@drawable/ic_container"
+            android:src="@drawable/ic_cargo"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/txt_cargoes_value"
+            app:layout_constraintEnd_toStartOf="@id/txt_price_value"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txt_max_weight"
+            android:id="@+id/txt_weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="@string/container_maximum_weight"
+            android:text="@string/cargo_weight"
             android:typeface="sans"
-            app:layout_constraintBottom_toBottomOf="@id/img_container"
-            app:layout_constraintStart_toEndOf="@id/img_container"
-            app:layout_constraintTop_toTopOf="@id/img_container" />
+            app:layout_constraintBottom_toBottomOf="@id/img_cargo"
+            app:layout_constraintStart_toEndOf="@id/img_cargo"
+            app:layout_constraintTop_toTopOf="@id/img_cargo" />
 
         <TextView
-            android:id="@+id/txt_max_weight_value"
+            android:id="@+id/txt_weight_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            android:text="@{viewModel.maximumWeight}"
+            android:text="@{viewModel.weight}"
             android:textStyle="bold"
             android:typeface="sans"
-            app:layout_constraintStart_toEndOf="@id/txt_max_weight"
-            app:layout_constraintTop_toTopOf="@id/txt_max_weight"
+            app:layout_constraintStart_toEndOf="@id/txt_weight"
+            app:layout_constraintTop_toTopOf="@id/txt_weight"
             tools:text="400" />
 
         <TextView
-            android:id="@+id/txt_cargoes"
+            android:id="@+id/txt_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
-            android:text="@string/cargoes"
-            app:layout_constraintBottom_toBottomOf="@id/txt_cargoes_value"
-            app:layout_constraintEnd_toStartOf="@id/txt_cargoes_value"
-            app:layout_constraintTop_toTopOf="@id/txt_cargoes_value" />
+            android:text="@string/cargo_price"
+            app:layout_constraintBottom_toBottomOf="@id/txt_price_value"
+            app:layout_constraintEnd_toStartOf="@id/txt_price_value"
+            app:layout_constraintTop_toTopOf="@id/txt_price_value" />
 
         <TextView
-            android:id="@+id/txt_cargoes_value"
+            android:id="@+id/txt_price_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="@{viewModel.cargos}"
+            android:text="@{viewModel.price}"
             android:textSize="32sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/img_container"
+            app:layout_constraintStart_toEndOf="@id/img_cargo"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="25" />
 

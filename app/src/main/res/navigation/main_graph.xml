@@ -37,5 +37,23 @@
         <argument
             android:name="id"
             app:argType="string" />
+        <action
+            android:id="@+id/action_inventoryContainersFragment_to_inventoryContainerCargoesFragment"
+            app:destination="@id/inventoryContainerCargoesFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_boxed_cargoes"
+        android:id="@+id/inventoryContainerCargoesFragment"
+        android:name="com.trifonov.packship.view.fragment.inventory.InventoryContainerCargoesFragment"
+        android:label="Inventory Cargoes">
+
+        <argument
+            android:name="inventoryId"
+            app:argType="string" />
+
+        <argument
+            android:name="containerId"
+            app:argType="string" />
+
     </fragment>
 </navigation>

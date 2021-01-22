@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.trifonov.packship.R
 import com.trifonov.packship.adapter.container.InventoryContainersAdapter
@@ -43,7 +44,8 @@ class InventoryContainersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        containersAdapter = InventoryContainersAdapter(viewLifecycleOwner, viewModel.containerDetails)
+        containersAdapter =
+            InventoryContainersAdapter(viewLifecycleOwner, viewModel.containerCargoes)
 
         binding.rcvContainers.apply {
             layoutManager = LinearLayoutManager(context)
@@ -53,6 +55,19 @@ class InventoryContainersFragment : Fragment() {
         viewModel.containers.observe(viewLifecycleOwner) { suppliers ->
 
             containersAdapter.setContainers(suppliers)
+        }
+
+        viewModel.containerCargoes.observe(viewLifecycleOwner) { containerId ->
+            viewModel.id.value?.let { inventoryId ->
+
+                findNavController()
+                    .navigate(
+                        InventoryContainersFragmentDirections
+                            .actionInventoryContainersFragmentToInventoryContainerCargoesFragment(
+                                inventoryId, containerId
+                            )
+                    )
+            }
         }
     }
 }

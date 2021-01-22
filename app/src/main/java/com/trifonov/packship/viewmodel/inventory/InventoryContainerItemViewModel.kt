@@ -19,4 +19,10 @@ class InventoryContainerItemViewModel(private val onContainerClicked: SingleLive
     fun bind(item: Container) {
         container.value = item
     }
+
+    fun onItemClicked() {
+        container.value?.let {
+            onContainerClicked.value = it.identity
+        }
+    }
 }

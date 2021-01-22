@@ -24,4 +24,8 @@
     <string name="container_maximum_weight">Max Weight</string>
     <string name="cargoes">Cargoes</string>
 
+    <!-- Cargo -->
+    <string name="cargo_weight">Weight</string>
+    <string name="cargo_price">Price</string>
+
 </resources>
