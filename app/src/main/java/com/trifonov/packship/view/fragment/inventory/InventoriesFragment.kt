@@ -1,5 +1,6 @@
 package com.trifonov.packship.view.fragment.inventory
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
@@ -83,8 +84,10 @@ class InventoriesFragment : Fragment() {
         })
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_test, menu)
+        menu.findItem(R.id.menu_preferences).icon.setTint(resources.getColor(R.color.white, null))
         super.onCreateOptionsMenu(menu, inflater)
     }
 

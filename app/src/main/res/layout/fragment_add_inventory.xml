@@ -24,7 +24,8 @@
             app:menu="@menu/menu_bottom_sheet_dialog_fragment"
             app:onToolbarMenuItemClick="@{() -> viewModel.onSaveButtonClicked()}"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="@string/add_inventory" />
+            app:title="@string/add_inventory"
+            app:titleTextColor="@color/white" />
 
 
         <TextView

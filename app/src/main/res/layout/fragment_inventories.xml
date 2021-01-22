@@ -39,7 +39,8 @@
             android:stateListAnimator="@animator/test_anim"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/crimson" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

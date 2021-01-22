@@ -8,17 +8,17 @@
         tools:ignore="MenuTitle" />
 
     <item
-        android:id="@+id/second_graph"
+        android:id="@+id/shipments_graph"
         android:icon="@drawable/ic_this_side_up"
         tools:ignore="MenuTitle" />
 
     <item
-        android:id="@+id/third_graph"
+        android:id="@+id/suppliers_graph"
         android:icon="@drawable/ic_delivery_truck_24_hours"
         tools:ignore="MenuTitle" />
 
     <item
-        android:id="@+id/fourth_graph"
+        android:id="@+id/containers_graph"
         android:icon="@drawable/ic_container"
         tools:ignore="MenuTitle" />
 
