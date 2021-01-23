@@ -6,6 +6,7 @@ import com.trifonov.packship.network.PackShipResponse
 import com.trifonov.packship.network.model.shipment.Shipment
 import com.trifonov.packship.repository.ShipmentRepository
 import com.trifonov.packship.util.DispatcherProvider
+import com.trifonov.packship.util.SingleLiveEvent
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -13,6 +14,8 @@ class ShipmentsViewModel @ViewModelInject constructor(
     private val shipmentRepository: ShipmentRepository,
     private val dispatcherProvider: DispatcherProvider
 ) : ViewModel(), LifecycleObserver {
+
+    val shipmentContainers = SingleLiveEvent<String>()
 
     val shipments = MutableLiveData<List<Shipment>>()
 

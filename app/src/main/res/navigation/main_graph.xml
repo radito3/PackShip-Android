@@ -55,5 +55,23 @@
             android:name="containerId"
             app:argType="string" />
 
+        <action
+            android:id="@+id/action_inventoryContainerCargoesFragment_to_addCargoBottomSheetDialogFragment"
+            app:destination="@id/addCargoBottomSheetDialogFragment" />
+
     </fragment>
+    <dialog
+        tools:layout="@layout/fragment_add_cargo"
+        android:id="@+id/addCargoBottomSheetDialogFragment"
+        android:name="com.trifonov.packship.view.fragment.inventory.AddCargoBottomSheetDialogFragment"
+        android:label="Add Cargo">
+
+        <argument
+            android:name="inventoryId"
+            app:argType="string" />
+
+        <argument
+            android:name="containerId"
+            app:argType="string" />
+    </dialog>
 </navigation>

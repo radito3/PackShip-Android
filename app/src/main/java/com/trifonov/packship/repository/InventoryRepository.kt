@@ -3,6 +3,7 @@ package com.trifonov.packship.repository
 import com.trifonov.packship.network.endpoint.InventoryEndpoint
 import com.trifonov.packship.network.PackShipResponse
 import com.trifonov.packship.network.model.cargo.Cargo
+import com.trifonov.packship.network.model.cargo.CargoBody
 import com.trifonov.packship.network.model.containers.Container
 import com.trifonov.packship.network.model.inventory.Inventory
 import com.trifonov.packship.network.model.inventory.InventoryBody
@@ -29,5 +30,9 @@ class InventoryRepository @Inject constructor(private val api: InventoryEndpoint
 
     suspend fun getInventoryContainerCargoes(inventoryId : String, containerId : String) : PackShipResponse<List<Cargo>> {
         return safeApiCall { api.getInventoryContainerCargoes(inventoryId, containerId) }
+    }
+
+    suspend fun addInventoryContainerCargo(inventoryId: String, containerId: String, cargoBody: CargoBody) : PackShipResponse<Unit> {
+        return safeApiCall { api.addInventoryContainerCargo(inventoryId, containerId, cargoBody) }
     }
 }

@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.trifonov.packship.R
 import com.trifonov.packship.adapter.cargo.CargoesAdapter
 import com.trifonov.packship.databinding.FragmentBoxedCargoesBinding
+import com.trifonov.packship.util.getNavigationResultLiveData
 import com.trifonov.packship.viewmodel.inventory.InventoryContainerCargoesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -53,5 +55,21 @@ class InventoryContainerCargoesFragment : Fragment() {
         viewModel.cargoes.observe(viewLifecycleOwner) { cargoes ->
             cargoesAdapter.setCargoes(cargoes)
         }
+
+        viewModel.addCargo.observe(viewLifecycleOwner) { (inventoryId, containerId) ->
+
+            findNavController()
+                .navigate(
+                    InventoryContainerCargoesFragmentDirections
+                        .actionInventoryContainerCargoesFragmentToAddCargoBottomSheetDialogFragment(
+                            inventoryId,
+                            containerId
+                        )
+                )
+        }
+
+        getNavigationResultLiveData<Unit>("NEW_CARGO")?.observe(viewLifecycleOwner, {
+            viewModel.getCargoes()
+        })
     }
 }

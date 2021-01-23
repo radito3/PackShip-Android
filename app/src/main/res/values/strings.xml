@@ -27,5 +27,6 @@
     <!-- Cargo -->
     <string name="cargo_weight">Weight</string>
     <string name="cargo_price">Price</string>
+    <string name="add_cargo">Add Cargo</string>
 
 </resources>

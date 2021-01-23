@@ -26,5 +26,21 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_boxed_cargo" />
 
+        <ImageView
+            android:id="@+id/img_more"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="32dp"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:onClick="@{() -> viewModel.onMoreButtonClicked()}"
+            android:focusable="true"
+            android:src="@drawable/ic_more"
+            android:stateListAnimator="@animator/test_anim"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/crimson" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

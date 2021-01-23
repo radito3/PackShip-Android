@@ -5,8 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import com.trifonov.packship.R
 import com.trifonov.packship.network.model.shipment.Shipment
+import com.trifonov.packship.util.SingleLiveEvent
 
-class ShipmentItemViewModel() : ViewModel() {
+class ShipmentItemViewModel(private val onShipmentClicked: SingleLiveEvent<String>) : ViewModel() {
 
     private val shipment = MutableLiveData<Shipment>()
 
@@ -25,8 +26,13 @@ class ShipmentItemViewModel() : ViewModel() {
 
     val assignments = shipment.map { it.assignments.toString() }
 
-
     fun bind(item: Shipment) {
         shipment.value = item
+    }
+
+    fun onItemClicked() {
+        shipment.value?.let {
+            onShipmentClicked.value = it.identity
+        }
     }
 }

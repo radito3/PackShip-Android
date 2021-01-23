@@ -6,8 +6,22 @@
     app:startDestination="@id/shipmentFragment">
 
     <fragment
-        tools:layout= "@layout/fragment_shipments"
         android:id="@+id/shipmentFragment"
         android:name="com.trifonov.packship.view.fragment.shipment.ShipmentFragment"
-        android:label="Shipments" />
+        android:label="Shipments"
+        tools:layout="@layout/fragment_shipments" >
+        <action
+            android:id="@+id/action_shipmentFragment_to_shipmentContainersFragment"
+            app:destination="@id/shipmentContainersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shipmentContainersFragment"
+        android:name="com.trifonov.packship.view.fragment.shipment.ShipmentContainersFragment"
+        android:label="Shipment Containers"
+        tools:layout="@layout/fragment_shipment_containers">
+
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
 </navigation>

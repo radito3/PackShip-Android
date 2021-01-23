@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.trifonov.packship.viewmodel.inventory.AddInventoryViewModel" />
+            type="com.trifonov.packship.viewmodel.inventory.AddCargoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,51 +24,50 @@
             app:menu="@menu/menu_bottom_sheet_dialog_fragment"
             app:onToolbarMenuItemClick="@{() -> viewModel.onSaveButtonClicked()}"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="@string/add_inventory"
+            app:title="@string/add_cargo"
             app:titleTextColor="@color/white" />
 
-
         <TextView
-            android:id="@+id/txt_width"
+            android:id="@+id/txt_weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@string/width"
+            android:text="@string/cargo_weight"
             android:typeface="sans"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
         <EditText
-            android:id="@+id/edit_txt_width"
+            android:id="@+id/edit_txt_weight"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@color/alabaster"
             android:inputType="number"
-            android:text="@={viewModel.width}"
+            android:text="@={viewModel.weight}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/txt_width" />
+            app:layout_constraintTop_toTopOf="@id/txt_weight" />
 
         <TextView
-            android:id="@+id/txt_height"
+            android:id="@+id/txt_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:text="@string/height"
+            android:text="@string/cargo_price"
             android:typeface="sans"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_width" />
+            app:layout_constraintTop_toBottomOf="@id/txt_weight" />
 
         <EditText
-            android:id="@+id/edit_txt_heigt"
+            android:id="@+id/edit_txt_price"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@color/alabaster"
             android:inputType="number"
-            android:text="@={viewModel.height}"
+            android:text="@={viewModel.price}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/txt_height" />
+            app:layout_constraintTop_toTopOf="@id/txt_price" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

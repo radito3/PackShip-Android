@@ -1,6 +1,7 @@
 package com.trifonov.packship.network.endpoint
 
 import com.trifonov.packship.network.model.cargo.Cargo
+import com.trifonov.packship.network.model.cargo.CargoBody
 import com.trifonov.packship.network.model.containers.Container
 import com.trifonov.packship.network.model.inventory.Inventory
 import com.trifonov.packship.network.model.inventory.InventoryBody
@@ -23,10 +24,17 @@ interface InventoryEndpoint {
     @GET("inventories/{inventoryId}/containers")
     suspend fun getInventoryContainers(@Path("inventoryId") id: String): List<Container>
 
-    @GET("(inventories/{inventoryId}/containers/{containerId}/cargos")
+    @GET("inventories/{inventoryId}/containers/{containerId}/cargos")
     suspend fun getInventoryContainerCargoes(
         @Path("inventoryId") inventoryId: String,
         @Path("containerId") containerId: String
-    ) : List<Cargo>
+    ): List<Cargo>
+
+    @POST("inventories/{inventoryId}/containers/{containerId}/cargos")
+    suspend fun addInventoryContainerCargo(
+        @Path("inventoryId") inventoryId: String,
+        @Path("containerId") containerId: String,
+        @Body cargo: CargoBody
+    )
 }
 

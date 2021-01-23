@@ -6,10 +6,12 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.trifonov.packship.databinding.ItemShipmentBinding
 import com.trifonov.packship.network.model.shipment.Shipment
+import com.trifonov.packship.util.SingleLiveEvent
 import com.trifonov.packship.viewmodel.shipment.ShipmentItemViewModel
 
 class ShipmentsAdapter(
-    private val lifecycleOwner: LifecycleOwner
+    private val lifecycleOwner: LifecycleOwner,
+    private val onShipmentClicked: SingleLiveEvent<String>
 ) :
     RecyclerView.Adapter<ShipmentsAdapter.ShipmentItemViewHolder>() {
 
@@ -21,7 +23,7 @@ class ShipmentsAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShipmentItemViewHolder {
-        val viewModel = ShipmentItemViewModel()
+        val viewModel = ShipmentItemViewModel(onShipmentClicked)
 
         val binding = ItemShipmentBinding
             .inflate(
