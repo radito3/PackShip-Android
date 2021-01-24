@@ -21,16 +21,14 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 @Module
 class NetworkModule {
+
     @Provides
     @Singleton
     fun providesObjectMapper(): ObjectMapper {
         val objectMapper = jacksonObjectMapper()
 
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-        objectMapper.configure(
-            DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE,
-            true
-        )
+        objectMapper.configure(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE, true)
 
         return objectMapper
     }
@@ -51,10 +49,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofitClient(
-        converterFactory: JacksonConverterFactory,
-        okHttpClient: OkHttpClient
-    ): Retrofit {
+    fun provideRetrofitClient(converterFactory: JacksonConverterFactory, okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl("http://10.0.2.2:8080/")

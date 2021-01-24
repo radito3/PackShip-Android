@@ -14,8 +14,7 @@ class ContainerItemViewModel(private val onContainerClicked: SingleLiveEvent<Str
 
     val maximumWeight = container.map { it.maximumWeight.toString() }
 
-    val state = container.map {
-        it.state }
+    val state = container.map { it.state }
 
     fun bind(item: Container) {
         container.value = item

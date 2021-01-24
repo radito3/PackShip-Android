@@ -23,18 +23,12 @@ class ContainersFragment : Fragment() {
 
     private lateinit var containersAdapter: ContainersAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_containers, container, false
-        )
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_containers, container, false)
 
         lifecycle.addObserver(viewModel)
 
         binding.lifecycleOwner = viewLifecycleOwner
-
         binding.viewModel = viewModel
 
         return binding.root
@@ -51,7 +45,6 @@ class ContainersFragment : Fragment() {
         }
 
         viewModel.containers.observe(viewLifecycleOwner) { suppliers ->
-
             containersAdapter.setContainers(suppliers)
         }
     }

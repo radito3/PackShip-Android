@@ -12,8 +12,7 @@ import com.trifonov.packship.viewmodel.inventory.InventoryItemViewModel
 class InventoriesAdapter(
     private val lifecycleOwner: LifecycleOwner,
     private val onInventoryClicked: SingleLiveEvent<String>
-) :
-    RecyclerView.Adapter<InventoriesAdapter.InventoryItemViewHolder>() {
+) : RecyclerView.Adapter<InventoriesAdapter.InventoryItemViewHolder>() {
 
     private var inventories: List<Inventory> = listOf()
 
@@ -24,13 +23,7 @@ class InventoriesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InventoryItemViewHolder {
         val viewModel = InventoryItemViewModel(onInventoryClicked)
-
-        val binding = ItemInventoryBinding
-            .inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+        val binding = ItemInventoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return InventoryItemViewHolder(binding, viewModel)
     }
