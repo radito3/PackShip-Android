@@ -33,7 +33,6 @@ class AddInventoryViewModel @ViewModelInject constructor(
             viewModelScope.launch(dispatcherProvider.ui) {
                 when (val response = inventoryRepository.addInventory(inventory)) {
                     is PackShipResponse.Success -> {
-
                        back.call()
                     }
                     is PackShipResponse.Error -> {

@@ -40,7 +40,17 @@
         <action
             android:id="@+id/action_inventoryContainersFragment_to_inventoryContainerCargoesFragment"
             app:destination="@id/inventoryContainerCargoesFragment" />
+        <action
+            android:id="@+id/action_inventoryContainersFragment_to_addInventoryContainerFragment"
+            app:destination="@+id/addInventoryContainerFragment" />
     </fragment>
+
+    <dialog
+        android:id="@+id/addInventoryContainerFragment"
+        android:name="com.trifonov.packship.view.fragment.inventory.AddInventoryBottomSheetDialogFragment"
+        android:label="Add Container"
+        tools:layout="@layout/fragment_add_container" />
+
     <fragment
         tools:layout="@layout/fragment_boxed_cargoes"
         android:id="@+id/inventoryContainerCargoesFragment"

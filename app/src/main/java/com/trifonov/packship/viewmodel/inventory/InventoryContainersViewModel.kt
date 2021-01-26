@@ -22,6 +22,7 @@ class InventoryContainersViewModel @ViewModelInject constructor(
 
     val id = savedStateHandle.getLiveData<String>("id")
     val containers = MutableLiveData<List<Container>>()
+    val addContainer = SingleLiveEvent<Unit>()
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun getContainers() {
@@ -43,6 +44,10 @@ class InventoryContainersViewModel @ViewModelInject constructor(
                 }
             }
         }
+    }
+
+    fun onMoreButtonClicked() {
+        addContainer.call()
     }
 
 }

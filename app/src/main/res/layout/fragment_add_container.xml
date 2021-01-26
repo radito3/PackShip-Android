@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.trifonov.packship.viewmodel.inventory.InventoryAddContainerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/PackShipToolbarTheme"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/menu_bottom_sheet_dialog_fragment"
+            app:onToolbarMenuItemClick="@{() -> viewModel.onSaveButtonClicked()}"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="@string/add_container"
+            app:titleTextColor="@color/white" />
+
+
+        <TextView
+            android:id="@+id/txt_width"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/width"
+            android:typeface="sans"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <EditText
+            android:id="@+id/edit_txt_width"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/alabaster"
+            android:inputType="number"
+            android:text="@={viewModel.width}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txt_width" />
+
+        <TextView
+            android:id="@+id/txt_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/height"
+            android:typeface="sans"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_width" />
+
+        <EditText
+            android:id="@+id/edit_txt_heigt"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/alabaster"
+            android:inputType="number"
+            android:text="@={viewModel.height}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txt_height" />
+
+        <TextView
+            android:id="@+id/txt_max_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="112dp"
+            android:text="@string/container_maximum_weight"
+            android:typeface="sans"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <EditText
+            android:id="@+id/edit_txt_max_weight"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/alabaster"
+            android:inputType="number"
+            android:text="@={viewModel.maxWeight}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txt_max_weight" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

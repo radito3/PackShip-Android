@@ -3,6 +3,7 @@ package com.trifonov.packship.network.endpoint
 import com.trifonov.packship.network.model.cargo.Cargo
 import com.trifonov.packship.network.model.cargo.CargoBody
 import com.trifonov.packship.network.model.containers.Container
+import com.trifonov.packship.network.model.containers.ContainerBody
 import com.trifonov.packship.network.model.inventory.Inventory
 import com.trifonov.packship.network.model.inventory.InventoryBody
 import retrofit2.http.Body
@@ -23,6 +24,10 @@ interface InventoryEndpoint {
 
     @GET("inventories/{inventoryId}/containers")
     suspend fun getInventoryContainers(@Path("inventoryId") id: String): List<Container>
+
+    @POST("inventories/{inventoryId}/containers")
+    suspend fun addInventoryContainer(@Path("inventoryId") id: String,
+                                      @Body container: ContainerBody)
 
     @GET("inventories/{inventoryId}/containers/{containerId}/cargos")
     suspend fun getInventoryContainerCargoes(

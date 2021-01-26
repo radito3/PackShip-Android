@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.trifonov.packship.R
@@ -21,21 +22,16 @@ class InventoryContainersFragment : Fragment() {
     private val viewModel: InventoryContainersViewModel by viewModels()
 
     private lateinit var binding: FragmentInventoryContainersBinding
-
     private lateinit var containersAdapter: InventoryContainersAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_inventory_containers, container, false
-        )
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View {
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_inventory_containers, container, false)
 
         lifecycle.addObserver(viewModel)
 
         binding.lifecycleOwner = viewLifecycleOwner
-
         binding.viewModel = viewModel
 
         return binding.root
@@ -53,20 +49,15 @@ class InventoryContainersFragment : Fragment() {
         }
 
         viewModel.containers.observe(viewLifecycleOwner) { suppliers ->
-
             containersAdapter.setContainers(suppliers)
         }
 
         viewModel.containerCargoes.observe(viewLifecycleOwner) { containerId ->
             viewModel.id.value?.let { inventoryId ->
-
                 findNavController()
-                    .navigate(
-                        InventoryContainersFragmentDirections
-                            .actionInventoryContainersFragmentToInventoryContainerCargoesFragment(
-                                inventoryId, containerId
-                            )
-                    )
+                    .navigate(InventoryContainersFragmentDirections
+                        .actionInventoryContainersFragmentToInventoryContainerCargoesFragment(
+                            inventoryId, containerId))
             }
         }
     }

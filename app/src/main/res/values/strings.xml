@@ -8,6 +8,7 @@
     <string name="height">Height</string>
     <string name="accepted_containers">Accepted Containers</string>
     <string name="add_inventory">Add Inventory</string>
+    <string name="add_container">Add Container</string>
 
     <!-- Shipments -->
     <string name="revenue"> Revenue</string>
